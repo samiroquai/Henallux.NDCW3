@@ -20,17 +20,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpClient.get<Post[]>("https://jsonplaceholder.typicode.com/posts")
-      .pipe(
-        concatMap(post => post),
-        flatMap(post => this.httpClient.get<Author>(`https://jsonplaceholder.typicode.com/users?id=${post.userId}`), (post, author) => {
-          const blogEntry: SummarizedBlogEntry = {
-            title: post.title,
-            author: author[0].name
-          }
-          return blogEntry;
-        }),
-      )
-      .subscribe(posts => this.blogData.push(posts));
+    // appels utiles:
+    //this.httpClient.get<Post[]>("https://jsonplaceholder.typicode.com/posts")
+    //this.httpClient.get<Author>(`https://jsonplaceholder.typicode.com/users?id=${post.userId}`)
+    // à vous de les combiner!
+
+    // Level: ++
   }
 }
